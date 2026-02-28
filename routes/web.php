@@ -2,14 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Response;
 use Illuminate\View\View;
+use App\Services\ProductService;
 
 Route::get('/', function () {
-    return ("Hello");   
+   return view('welcome', ['name' => 'Gonato-App']);  
+   // return 'Hello World'; 
 });
 
 Route::get('/show-users', [UserController::class, 'show']);
@@ -76,4 +79,17 @@ Route::get('/token', function (Request $request) {
 
 Route::post('/token', function (Request $request) {
     return $request->all();
+});
+
+
+//middleware
+Route::get('/users', [UserController::class, 'index'])->middleware('user-middleware');
+
+//Resource
+Route::resource('products', ProductController::class);
+
+//View
+Route::get('/product-list', function (ProductService $productService) {
+   $data ['products'] = $productService->listProducts();
+   return view('products.list', $data);
 });
