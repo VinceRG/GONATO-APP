@@ -1,3 +1,8 @@
+<x-layout>
+    <x-slot name="heading">
+        {{-- Products List --}}
+    </x-slot>
+<x-table>
 <div class="table-responsive mt-4">
     <h1>Products List</h1>
     <table class="table table-striped table-hover">
@@ -21,9 +26,10 @@
                 </tr>
             @endforelse
         </tbody>
-    </table>
+    </x-table>
 </div>
-<h1>Tasks</h1>
+</x-layout>
+{{-- <h1>Tasks</h1>
 <ul>
     @foreach($tasks as $task)
         <li>{{ $task }}</li>
@@ -31,4 +37,4 @@
 </ul>
 
 <p>Global Variable: {{ $SharedVariable }}</p>
-<p>Product Key: {{ $productKey }}</p>
+<p>Product Key: {{ $productKey }}</p> --}}

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Route\web;
 
 class UserController extends Controller
 {
@@ -23,7 +24,8 @@ class UserController extends Controller
     }
     public function index(UserService $userService)
     {
-      return $userService->listUsers();
+    //   return $userService->listUsers();
+        return view('users.index', ['users' => $userService -> listUsers()]);
     }
 
     public function first (UserService $userService)
